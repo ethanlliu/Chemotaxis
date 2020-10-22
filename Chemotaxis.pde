@@ -45,14 +45,14 @@ class Dice
     myY = myY - mySpeed;
     myY = myY +(int)(Math.random()*3);
     myX = myX +(int)(Math.random()*6)-3;
-    if(myY > 600)
+    if(myY > 500)
     {
-      myY = -100;
+      myY = 100;
       
     }
-    if(myX < -100)
+    if(myX < 100)
     {
-      myX = 600;
+      myX = 500;
       
     }
   }
