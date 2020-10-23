@@ -1,15 +1,15 @@
-Bubble[] pop = new Bubble[100];
+Dice[] pop = new Dice[100];
 void setup()
 {
-  size(400,400);
+  size(500,500);
   for(int i = 0; i <pop.length; i++)
   {
-    pop[i] = new Bubble();
+    pop[i] = new Dice();
   }
 } 
 void draw()
 {
-  background(255);
+  background(20,20,20);
   for(int i = 0; i <pop.length; i++)
   {
     pop[i].rise();
@@ -18,36 +18,95 @@ void draw()
 }
 
 
-class Bubble
+class Dice
 {
-  int myColor;
-  int mySize;
-  int myX;
+  float mySize;
+  float myX;
+  float num;
   float myY;
   float mySpeed;
+  Dice()
   {
     
-    myColor = color((int)(Math.random()*256),(int)(Math.random()*256),(int)(Math.random()*256));
+    roll();
     mySize = (int)(Math.random()*80)+20;
-    mySpeed =mySize/100.0;
-    myX=(int)(Math.random()*400);
-    myY=(int)(Math.random()*400);
+    mySpeed =-mySize/25;
+    myX=(int)(Math.random()*500);
+    myY=(int)(Math.random()*500);
     
   }
+  void roll()
+      {
+          num = (int)(Math.random()*6);
+     
+       
+      }
   void rise()
   {
     myY = myY - mySpeed;
-    myY = myY +(int)(Math.random()*3)-1;
-    if(myY < -100)
+    myY = myY +(int)(Math.random()*3);
+    myX = myX +(int)(Math.random()*6)-3;
+    if(myY > 600)
     {
-      myY = 500;
+      myY = -100;
+      
+    }
+    if(myX < -100)
+    {
+      myX = 600;
       
     }
   }
   void show()
-  {
-    fill(myColor);
-    stroke(myColor);
-    ellipse(myX,myY,mySize,mySize);
-  }
+      {
+        
+        fill(300,300,300);
+        rect(myX,myY,mySize,mySize);
+        fill(0,0,0);
+        if (num == 1)
+        {  
+          ellipse(myX+(mySize/2),myY+(mySize/2),mySize/5,mySize/5);
+        }
+      else if (num == 2)
+        {  
+          ellipse(myX+(mySize/4),myY+(mySize/4),mySize/5,mySize/5); 
+          ellipse(myX+(3*(mySize)/4),myY+(3*(mySize)/4),mySize/5,mySize/5);
+        }
+        else if (num == 3)
+        {  
+          ellipse(myX+(mySize/4),myY+(mySize/4),mySize/5,mySize/5); 
+          ellipse(myX+(3*(mySize)/4),myY+(3*(mySize)/4),mySize/5,mySize/5);
+          ellipse(myX+(mySize/2),myY+(mySize/2),mySize/5,mySize/5);
+          
+        }
+        else if (num == 4)
+        {  
+          ellipse(myX+(mySize/4),myY+(mySize/4),mySize/5,mySize/5); 
+          ellipse(myX+(mySize/4),myY+(3*(mySize)/4),mySize/5,mySize/5);      
+          ellipse(myX+(3*(mySize)/4),myY+(3*(mySize)/4),mySize/5,mySize/5);
+          ellipse(myX+(3*(mySize)/4),myY+(mySize/4),mySize/5,mySize/5);
+        }
+        else if (num == 5)
+        {  
+          ellipse(myX+(mySize/4),myY+(mySize/4),mySize/5,mySize/5); 
+          ellipse(myX+(mySize/4),myY+(3*(mySize)/4),mySize/5,mySize/5);      
+          ellipse(myX+(3*(mySize)/4),myY+(3*(mySize)/4),mySize/5,mySize/5);
+          ellipse(myX+(3*(mySize)/4),myY+(mySize/4),mySize/5,mySize/5);
+          ellipse(myX+(mySize/2),myY+(mySize/2),mySize/5,mySize/5);
+        }
+        else
+        {  
+          ellipse(myX+(mySize/4),myY+(mySize/2),mySize/5,mySize/5); 
+          ellipse(myX+(3*(mySize)/4),myY+(mySize/2),mySize/5,mySize/5); 
+          ellipse(myX+(mySize/4),myY+(mySize/4),mySize/5,mySize/5); 
+          ellipse(myX+(mySize/4),myY+(3*(mySize)/4),mySize/5,mySize/5);      
+          ellipse(myX+(3*(mySize)/4),myY+(3*(mySize)/4),mySize/5,mySize/5);
+          ellipse(myX+(3*(mySize)/4),myY+(mySize/4),mySize/5,mySize/5);
+        }
+          
+        
+        
+        
+        
+      }
 }
