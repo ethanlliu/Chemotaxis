@@ -20,9 +20,9 @@ void draw()
 
 class Dice
 {
-  int mySize;
-  int myX;
-  int num;
+  float mySize;
+  float myX;
+  float num;
   float myY;
   float mySpeed;
   {
